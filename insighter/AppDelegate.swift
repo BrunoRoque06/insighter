@@ -17,9 +17,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var increment: Int = 1
 //    let conn = _CGSDefaultConnection()
     
-    @objc private func spaceChanged() {
+    func getCurrentDesktop() -> Int {
+        return 1;
+    }
+    
+    func getDesktopTotalCount() -> Int {
+        return 4;
+    }
+    
+    @objc private func updateDesktopsInfo(_ notification: Notification) {
         increment = increment + 1
-        statusBarItem.button?.title = String(increment)
+//        let current = getCurrentDesktop()
+        let total = getDesktopTotalCount()
+        statusBarItem.button?.title = "\(String(increment))|\(String(total))"
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -45,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         NSWorkspace.shared.notificationCenter.addObserver(
             self,
-            selector: #selector(spaceChanged),
+            selector: #selector(updateDesktopsInfo),
             name: NSWorkspace.activeSpaceDidChangeNotification,
             object: nil
            )
