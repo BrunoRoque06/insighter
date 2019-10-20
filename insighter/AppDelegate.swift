@@ -25,11 +25,48 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return 4;
     }
     
-    @objc private func updateDesktopsInfo(_ notification: Notification) {
+    func getPlist(withName name: String) -> [String]?
+    {
+        if  let path = Bundle.main.path(forResource: name, ofType: "plist"),
+            let xml = FileManager.default.contents(atPath: path)
+        {
+            return (try? PropertyListSerialization.propertyList(from: xml, options: .mutableContainersAndLeaves, format: nil)) as? [String]
+        }
+
+        return nil
+    }
+    
+    @objc private func updateDesktopsInfo() {
         increment = increment + 1
 //        let current = getCurrentDesktop()
         let total = getDesktopTotalCount()
         statusBarItem.button?.title = "\(String(increment))|\(String(total))"
+        
+        var nsDictionary: NSDictionary?
+        if let path = Bundle.main.path(forResource: "com.apple.spaces", ofType: "plist", inDirectory: "~/Library/Preferences/") {
+           nsDictionary = NSDictionary(contentsOfFile: path)
+        }
+        let value = nsDictionary?.value(forKey: "spans-displays")
+        let file = getPlist(withName: "~/Library/Preferences/com.apple.spaces")
+        let anotherTry = Bundle.main.path(forResource: "com.apple.spaces", ofType: "plist", inDirectory: "/Library/Preferences/")
+        let fullPath = ("~/Library/Preferences/com.apple.spaces.plist" as NSString).expandingTildeInPath
+        let fm = FileManager.default
+//        let applicationSupportFolderURL = try! FileManager.default.URLForDirectory(.preferencePanesDirectory, inDomain: .LocalDomainMask, appropriateForURL: nil, create: false)
+//        let jsonDataURL = applicationSupportFolderURL.URLByAppendingPathComponent("AppFolder/data.json")
+        let caminho = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library").appendingPathComponent("Preferences").appendingPathComponent("com.apple.spaces").appendingPathExtension("plist")
+        NSLog(FileManager.default.homeDirectoryForCurrentUser.path)
+        NSLog(caminho.path)
+        caminho.path
+        let fileManager = FileManager.default
+        let resultado = fileManager.fileExists(atPath: caminho.path)
+//        FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library").appendingPathComponent("Preferences").appendingPathComponent("com.apple.spaces").appendingPathExtension("plist")
+        let fds = URL(fileURLWithPath: "/Users/brunoroque/Library/Preferences/com.apple.spaces.plist")
+        let agora = fileManager.fileExists(atPath: fds.path)
+        let merda = NSDictionary(contentsOfFile: fullPath)
+//        let content = NSString(contentsOf: fds)
+        let string = try NSString(contentsOf: <#T##URL#>, encoding: 1)
+        let mapa = NSDictionary(contentsOf: fds)
+        let something = 1
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -59,6 +96,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             name: NSWorkspace.activeSpaceDidChangeNotification,
             object: nil
            )
+        
+        updateDesktopsInfo()
     }
         
     func updateActiveSpaceNumber() -> Int {
