@@ -64,7 +64,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let agora = fileManager.fileExists(atPath: fds.path)
         let merda = NSDictionary(contentsOfFile: fullPath)
 //        let content = NSString(contentsOf: fds)
-        let string = try NSString(contentsOf: <#T##URL#>, encoding: 1)
+        var string: NSString?
+        do {
+            string = try NSString(contentsOf: fds, encoding: String.Encoding.utf8.rawValue)
+        } catch {
+            print("Unexpected error: \(error).")
+        }
+//        let string = try? NSString(contentsOf: fds, encoding: String.Encoding.utf8.rawValue)
         let mapa = NSDictionary(contentsOf: fds)
         let something = 1
     }
