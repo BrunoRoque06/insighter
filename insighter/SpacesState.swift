@@ -49,7 +49,7 @@ struct SpacesPlist: Decodable {
     }
 }
 
-func readSpacesState(url: URL) -> SpacesState {
+func readSpacesState(_ url: URL) -> SpacesState {
     do {
         let content = try _readSpacesPlist(url: url)
         return try _convertToSpacesState(spacesPlist: content)
@@ -64,8 +64,11 @@ struct SpacesState {
 }
 
 func _convertToSpacesState(spacesPlist: SpacesPlist) throws -> SpacesState {
+    let currentSpace = spacesPlist.spacesDisplayConfiguration.managementData.monitors[0].currentSpace?.uuid
+    let spaces = spacesPlist.spacesDisplayConfiguration.spaceProperties.map({ $0.name })
+    let current = spaces.firstIndex(where: { $0 == currentSpace })
     let count = spacesPlist.spacesDisplayConfiguration.spaceProperties.count
-    return SpacesState(current: 0, count: count)
+    return SpacesState(current: current ?? 0, count: count)
 }
 
 func shell(_ command: String) throws -> String {
