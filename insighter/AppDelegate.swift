@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         updateDesktopsInfo()
     }
-    
+
     func addMenu() {
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Quit Insight", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))

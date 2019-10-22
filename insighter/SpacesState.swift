@@ -65,7 +65,7 @@ struct SpacesState {
 
 func _convertToSpacesState(spacesPlist: SpacesPlist) throws -> SpacesState {
     let currentSpace = spacesPlist.spacesDisplayConfiguration.managementData.monitors[0].currentSpace?.uuid
-    let spaces = spacesPlist.spacesDisplayConfiguration.spaceProperties.map({ $0.name })
+    let spaces = spacesPlist.spacesDisplayConfiguration.spaceProperties.map { $0.name }
     let current = spaces.firstIndex(where: { $0 == currentSpace })
     let count = spacesPlist.spacesDisplayConfiguration.spaceProperties.count
     return SpacesState(current: current ?? 0, count: count)
