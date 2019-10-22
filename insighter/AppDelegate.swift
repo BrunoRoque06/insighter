@@ -9,11 +9,63 @@
 import Cocoa
 import SwiftUI
 
-struct Spaces: Codable {
-    let spansDisplays: Bool
+struct SpacesPlist: Decodable {
+    struct SpacesDisplayConfiguration: Decodable {
+        struct ManagementData: Decodable {
+            struct Monitor: Decodable {
+                struct Space: Decodable {
+                    let uuid: String
+                    
+                    init(uuid: String) {
+                        self.uuid = uuid
+                    }
+                }
+                let currentSpace: Space?
+                
+                init(currentSpace: Space) {
+                    self.currentSpace = currentSpace
+                }
+                
+                enum CodingKeys: String, CodingKey {
+                    case currentSpace = "Current Space"
+                }
+            }
+            let monitors: [Monitor]
+            
+            enum CodingKeys: String, CodingKey {
+                case monitors = "Monitors"
+            }
+        }
+        
+        struct SpaceProperties: Decodable {
+            let name: String
+            
+            init(name:String) {
+                self.name = name
+            }
+        }
+        
+        let managementData: ManagementData
+        let spaceProperties: [SpaceProperties]
+        
+//        init(managementData: ManagementData) {
+//            self.managementData = managementData
+//        }
+        
+        enum CodingKeys: String, CodingKey {
+            case managementData = "Management Data"
+            case spaceProperties = "Space Properties"
+        }
+    }
     
-    init(spansDisplay: Bool) {
-        self.spansDisplays = spansDisplay
+    let spacesDisplayConfiguration: SpacesDisplayConfiguration
+    
+    init(spacesDisplayConfiguration: SpacesDisplayConfiguration) {
+        self.spacesDisplayConfiguration = spacesDisplayConfiguration
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case spacesDisplayConfiguration = "SpacesDisplayConfiguration"
     }
 }
 
@@ -73,11 +125,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let merda = NSDictionary(contentsOfFile: fullPath)
 //        let content = NSString(contentsOf: fds)
         var string: NSString?
-        let plistDecoder = PropertyListDecoder()
-        let spaces: Spaces?
+        let decoder = PropertyListDecoder()
+        let spaces: SpacesPlist?
         do {
             let data = try Data.init(contentsOf: fds)
-            spaces = try plistDecoder.decode(Spaces.self, from: data)
+            spaces = try decoder.decode(SpacesPlist.self, from: data)
+//            spaces = try plistDecoder.decode(SpacesPlist.self, from: data)
             string = try NSString(contentsOf: fds, encoding: String.Encoding.utf8.rawValue)
         } catch {
             print("Unexpected error: \(error).")
