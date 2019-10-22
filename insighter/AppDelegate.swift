@@ -11,10 +11,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_: Notification) {
-        let statusBar = NSStatusBar.system
-        statusBarItem = statusBar.statusItem(withLength: NSStatusItem.squareLength)
-        let statusBarMenu = NSMenu(title: "Cap Status Bar Menu")
-        statusBarItem.menu = statusBarMenu
+        statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+        addMenu()
 
         NSWorkspace.shared.notificationCenter.addObserver(
             self,
@@ -25,8 +23,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         updateDesktopsInfo()
     }
-
-    func applicationWillTerminate(_: Notification) {
-        // Insert code here to tear down your application
+    
+    func addMenu() {
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "Quit Insight", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        statusBarItem.menu = menu
     }
 }
