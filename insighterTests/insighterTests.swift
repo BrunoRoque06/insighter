@@ -6,11 +6,10 @@
 //  Copyright © 2019 brunoroque06. All rights reserved.
 //
 
-import XCTest
 @testable import insighter
+import XCTest
 
 class insighterTests: XCTestCase {
-
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -26,9 +25,8 @@ class insighterTests: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

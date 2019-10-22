@@ -13,6 +13,8 @@
 		A0945B24235A5350003E4A38 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0945B23235A5350003E4A38 /* Preview Assets.xcassets */; };
 		A0945B27235A5350003E4A38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0945B25235A5350003E4A38 /* Main.storyboard */; };
 		A0945B33235A5350003E4A38 /* insighterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0945B32235A5350003E4A38 /* insighterTests.swift */; };
+		A0ADBCA4235F927B00FFB8CF /* spacesStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ADBCA3235F927B00FFB8CF /* spacesStateTests.swift */; };
+		A0BF9282235F20F400C82FB1 /* SpacesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BF9281235F20F400C82FB1 /* SpacesState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,8 @@
 		A0945B2E235A5350003E4A38 /* insighterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = insighterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0945B32235A5350003E4A38 /* insighterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = insighterTests.swift; sourceTree = "<group>"; };
 		A0945B34235A5350003E4A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0ADBCA3235F927B00FFB8CF /* spacesStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spacesStateTests.swift; sourceTree = "<group>"; };
+		A0BF9281235F20F400C82FB1 /* SpacesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacesState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 				A0945B28235A5350003E4A38 /* Info.plist */,
 				A0945B29235A5350003E4A38 /* insighter.entitlements */,
 				A0945B22235A5350003E4A38 /* Preview Content */,
+				A0BF9281235F20F400C82FB1 /* SpacesState.swift */,
 			);
 			path = insighter;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 			children = (
 				A0945B32235A5350003E4A38 /* insighterTests.swift */,
 				A0945B34235A5350003E4A38 /* Info.plist */,
+				A0ADBCA3235F927B00FFB8CF /* spacesStateTests.swift */,
 			);
 			path = insighterTests;
 			sourceTree = "<group>";
@@ -209,6 +215,7 @@
 			files = (
 				A0945B1F235A534F003E4A38 /* ContentView.swift in Sources */,
 				A0945B1D235A534F003E4A38 /* AppDelegate.swift in Sources */,
+				A0BF9282235F20F400C82FB1 /* SpacesState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0ADBCA4235F927B00FFB8CF /* spacesStateTests.swift in Sources */,
 				A0945B33235A5350003E4A38 /* insighterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
