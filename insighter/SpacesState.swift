@@ -67,3 +67,32 @@ func _convertToSpacesState(spacesPlist: SpacesPlist) throws -> SpacesState {
     let count = spacesPlist.spacesDisplayConfiguration.spaceProperties.count
     return SpacesState(current: 0, count: count)
 }
+
+func shell(_ command: String) -> String {
+    let task = Process()
+    task.launchPath = "/usr/local/bin/fish"
+    task.arguments = ["-c", command]
+
+    let pipe = Pipe()
+    task.standardOutput = pipe
+    task.launch()
+
+    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+    let output: String = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
+
+    return output
+}
+
+func shellToInt(_ command: String) -> Int {
+    let result = shell(command)
+    let trimmedResult = result.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    return Int(trimmedResult)!
+}
+
+func getSpacesStateThroughYabai() -> SpacesState {
+    NSLog(shell("yabai -m query --spaces --space | jq '.index'"))
+    let current = shellToInt("yabai -m query --spaces --space | jq '.index'")
+    let count = shellToInt("yabai -m query --spaces | jq '. | length'")
+    return SpacesState(current: current, count: count)
+}
+

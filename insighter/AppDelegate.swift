@@ -6,7 +6,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem!
 
     @objc private func updateDesktopsInfo() {
-        let spacesState = readSpacesState(url: spacesPlist)
+        let spacesState = getSpacesStateThroughYabai()
         statusBarItem.button?.title = "\(String(spacesState.current))|\(String(spacesState.count))"
     }
 
