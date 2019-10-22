@@ -9,6 +9,14 @@
 import Cocoa
 import SwiftUI
 
+struct Spaces: Codable {
+    let spansDisplays: Bool
+    
+    init(spansDisplay: Bool) {
+        self.spansDisplays = spansDisplay
+    }
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -65,7 +73,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let merda = NSDictionary(contentsOfFile: fullPath)
 //        let content = NSString(contentsOf: fds)
         var string: NSString?
+        let plistDecoder = PropertyListDecoder()
+        let spaces: Spaces?
         do {
+            let data = try Data.init(contentsOf: fds)
+            spaces = try plistDecoder.decode(Spaces.self, from: data)
             string = try NSString(contentsOf: fds, encoding: String.Encoding.utf8.rawValue)
         } catch {
             print("Unexpected error: \(error).")
