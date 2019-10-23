@@ -18,7 +18,7 @@ class spacesStateTests: XCTestCase {
     }
 
     func test_GivenConfigFile_WhenReading_ThenFieldsAreCorrect() {
-        let path = "/Users/brunoroque/Projects/insighter/insighterTests/com.apple.spaces.plist"
+        let path = FileManager.default.currentDirectoryPath + "./com.apple.spaces.plist"
         let url = URL(fileURLWithPath: path)
         let spaces = try! _readSpacesPlist(url: url)
 

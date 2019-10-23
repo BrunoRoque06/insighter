@@ -1,6 +1,6 @@
 import Foundation
 
-let spacesPlist = URL(fileURLWithPath: "/Users/brunoroque/Library/Preferences/com.apple.spaces.plist")
+let spacesPlist = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library").appendingPathComponent("Preferences").appendingPathComponent("com.apple.spaces.plist")
 
 func _readSpacesPlist(url: URL) throws -> SpacesPlist {
     let content = try Data(contentsOf: url)
