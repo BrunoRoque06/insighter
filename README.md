@@ -1,6 +1,6 @@
 #  Insighter
 
-Displays current and total number of spaces in MacOS.
+MacOS menu bar app that displays current and total number of spaces.
 
 ## Requirements
 
