@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func addMenu() {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Quit Insight", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem(title: "Quit Insighter", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         statusBarItem.menu = menu
     }
 }
