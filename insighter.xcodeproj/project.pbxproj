@@ -26,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A02BBC532360F48B00E16638 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A0945B19235A534F003E4A38 /* insighter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = insighter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0945B1C235A534F003E4A38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0945B20235A5350003E4A38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		A0945B10235A534F003E4A38 = {
 			isa = PBXGroup;
 			children = (
+				A02BBC532360F48B00E16638 /* README.md */,
 				A0945B1B235A534F003E4A38 /* insighter */,
 				A0945B31235A5350003E4A38 /* insighterTests */,
 				A0945B1A235A534F003E4A38 /* Products */,
