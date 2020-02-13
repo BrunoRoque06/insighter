@@ -1,4 +1,6 @@
-#  Insighter
+# Insighter
+
+UPDATE: I no longer use this, as I am using Amethyst instead of yabai.
 
 MacOS menu bar app that displays current and total number of spaces.
 
